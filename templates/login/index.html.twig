@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="login">
+	
+		<div class="main-agileits">
+			<div class="form-w3agile">
+				<h3>Login</h3>
+				<form action="#" method="post">
+					<div class="key">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<input  type="text" name="Email" required="" placeholder="Email">
+						<div class="clearfix"></div>
+					</div>
+					<div class="key">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+						<input  type="password" name="Password" required="" placeholder="Password">
+						<div class="clearfix"></div>
+					</div>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			<div class="forg">
+				<a href="#" class="forg-left">Forgot Password</a>
+				<a href="register.html" class="forg-right">Register</a>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+		<!-- newsletter -->
+	<!-- cart-js -->
+<script src="js/minicart.js"></script>
+<script>
+        w3ls1.render();
+
+        w3ls1.cart.on('w3sb1_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        			items[i].set('shipping', 0);
+        			items[i].set('shipping2', 0);
+        		}
+        	}
+        });
+    </script>  
+	<!-- //cart-js -->  
+
+{% endblock %}
