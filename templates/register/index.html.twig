@@ -2,6 +2,18 @@
 
 {% block body %}
 
+	{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.nombre) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+
+
 	<div class="login">
 	
 		<div class="main-agileits">
@@ -10,7 +22,7 @@
 					<form action="#" method="post">
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="Username" required=""  placeholder="Username">
+							<input  type="text"  name="Name" required=""  placeholder="Name and last name">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">

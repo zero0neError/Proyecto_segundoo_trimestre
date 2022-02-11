@@ -1159,7 +1159,14 @@ p.sbmincart-empty-text {
 .about img {
     width: 100%;
 }
- 
+
+button{
+
+	background-color: #0000ff;
+	color: white;;
+	border-radius: 3px;
+}
+
 .about-info p {  
     margin: 1em 0 1.5em;
 }
@@ -1760,6 +1767,18 @@ p.single-price-text {
     float: left;
     background: none;
 }
+
+.key label{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
 .form-w3agile input[type="submit"] {
     background: #00e58b;
     color: #FFFFFF;
