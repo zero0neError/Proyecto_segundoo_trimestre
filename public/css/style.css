@@ -1756,7 +1756,7 @@ p.single-price-text {
     font-size: 1.1em;
     padding: 13px;
 }
-.key input[type="text"], .key input[type="password"],input[type="email"] {
+.key input[type="text"], .key input[type="password"], input[type="email"] {
     width: 89%;
     padding: 10px 10px;
     font-size: 1em;
