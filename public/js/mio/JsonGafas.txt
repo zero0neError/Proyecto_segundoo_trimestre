@@ -7,5 +7,5 @@
   {"id": "6", "nombre": "Gafas hombreM", "precio" : "10.00€"},
   {"id": "7", "nombre": "Gafas mujerM", "precio" : "10.00€"},
   {"id": "8", "nombre": "Gafas variables", "precio" : "13.00€"},
-  {"id": "9", "nombre": "Gafas basura", "precio" : "2.00€"},,
+  {"id": "9", "nombre": "Gafas basura", "precio" : "2.00€"}
 ]
