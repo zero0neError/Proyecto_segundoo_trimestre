@@ -60,24 +60,26 @@ class Producto
     private $resolucion;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":"0"})
      */
-    private $esta_alquilado;
+    private $esta_alquilado=false;
 
     /**
      * @ORM\OneToMany(targetEntity=ReservaProducto::class, mappedBy="id_producto")
      */
     private $reservaProducto;
-    
+
     /**
      * @ORM\Column(type="string", length=500)
      */
     private $img;
 
     /**
-     * @ORM\OneToOne(targetEntity=TipoProducto::class, mappedBy="nombre", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=TipoProducto::class, inversedBy="producto", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $tipoProducto;
+    private $tipo_producto;
+
 
     public function __construct()
     {
@@ -241,17 +243,12 @@ class Producto
 
     public function getTipoProducto(): ?TipoProducto
     {
-        return $this->tipoProducto;
+        return $this->tipo_producto;
     }
 
-    public function setTipoProducto(TipoProducto $tipoProducto): self
+    public function setTipoProducto(TipoProducto $tipo_producto): self
     {
-        // set the owning side of the relation if necessary
-        if ($tipoProducto->getNombre() !== $this) {
-            $tipoProducto->setNombre($this);
-        }
-
-        $this->tipoProducto = $tipoProducto;
+        $this->tipo_producto = $tipo_producto;
 
         return $this;
     }

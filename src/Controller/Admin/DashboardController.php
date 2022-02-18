@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Tramo;
 use App\Entity\Producto;
+use App\Entity\TipoProducto;
 use App\Entity\TiposProductos;
 use App\Controller\Admin\AletasCrudController;
 use Symfony\Component\HttpFoundation\Response;

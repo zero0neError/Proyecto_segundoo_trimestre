@@ -47,4 +47,46 @@ class ProductoRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function devuelveTodasLasBotellas()
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT id_producto,nombre,descripcion,precio,capacidad,img,tipo_producto_id FROM PRODUCTO WHERE tipo_producto_id LIKE 4';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+
+    }
+
+    public function devuelveTodasLasBotellasNoAlquiladas()
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT id_producto,nombre,descripcion,precio,capacidad,img,tipo_producto_id FROM PRODUCTO WHERE tipo_producto_id = 4 and esta_alquilado = 0';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+
+    }
+
+    public function devuelveBotellasAgrupadas()
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT count(*) FROM PRODUCTO WHERE tipo_producto_id = 4 and esta_alquilado = 1';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+
+    }
 }

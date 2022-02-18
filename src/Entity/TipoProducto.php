@@ -18,25 +18,51 @@ class TipoProducto
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Producto::class, inversedBy="tipoProducto", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $nombre;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Producto::class, mappedBy="tipo_producto", cascade={"persist", "remove"})
+     */
+    private $producto;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNombre(): ?Producto
+    public function getNombre(): ?string
     {
         return $this->nombre;
     }
 
-    public function setNombre(Producto $nombre): self
+    public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
 
         return $this;
+    }
+
+    public function getProducto(): ?Producto
+    {
+        return $this->producto;
+    }
+
+    public function setProducto(Producto $producto): self
+    {
+        // set the owning side of the relation if necessary
+        if ($producto->getTipoProducto() !== $this) {
+            $producto->setTipoProducto($this);
+        }
+
+        $this->producto = $producto;
+
+        return $this;
+    }
+
+    public function __toString(){
+
+        return $this->nombre;
     }
 }

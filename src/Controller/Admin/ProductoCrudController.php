@@ -3,13 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Producto;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 
 class ProductoCrudController extends AbstractCrudController
@@ -33,7 +33,7 @@ class ProductoCrudController extends AbstractCrudController
             NumberField::new('produndidad_max'),
             TextField::new('resolucion'),
             ImageField::new('img')->setUploadDir("public/images/subidas"),
-            AssociationField::new('tipoProducto')
+            AssociationField::new('tipo_producto')
             
         ];
     }
