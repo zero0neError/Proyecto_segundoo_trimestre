@@ -12,8 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 
-
-
 class BotellasController extends AbstractController
 {
     /**
@@ -42,4 +40,20 @@ class BotellasController extends AbstractController
 
         return new Response($producto);
     }
+
+
+    /**
+     * @Route("/api/botellas/agrupadas", name="botellasAgrupadas")
+     */
+    public function devuelveBotellasLibresAgrupadas(ManagerRegistry $doctrine): Response
+    {
+                
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->devuelveTodasLasBotellasAgrupadas();
+
+        return new Response($producto);
+    }
+
+    
 }

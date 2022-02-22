@@ -26,7 +26,7 @@ class ProductoCrudController extends AbstractCrudController
         return [
             NumberField::new('id_producto'),
             TextField::new('nombre'),
-            TextEditorField::new('descripcion'),
+            TextField::new('descripcion'),
             TextField::new('talla'),
             NumberField::new('precio'),
             NumberField::new('capacidad'),
