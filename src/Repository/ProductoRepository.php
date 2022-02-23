@@ -49,6 +49,21 @@ class ProductoRepository extends ServiceEntityRepository
     */
 
     //###########################   BOTELLAS
+
+    public function devuelveBotellasAPartirDePagina($pagina)
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT id_producto,nombre,descripcion,precio,produndidad_max,img,tipo_producto_id,esta_alquilado FROM PRODUCTO WHERE tipo_producto_id = 6';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+
+    }
+
     public function devuelveTodasLasBotellas()
     {
     
@@ -60,6 +75,20 @@ class ProductoRepository extends ServiceEntityRepository
         $registros=$resultSet->fetchAll();
         
         return json_encode($registros);
+
+    }
+
+    public function devuelveTodasLasBotellasNoJson()
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT id_producto,nombre,descripcion,precio,capacidad,img,tipo_producto_id,esta_alquilado FROM PRODUCTO WHERE tipo_producto_id LIKE 4';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return $registros;
 
     }
 
@@ -212,4 +241,7 @@ class ProductoRepository extends ServiceEntityRepository
         return json_encode($registros);
 
     }
+
+    
+    
 }

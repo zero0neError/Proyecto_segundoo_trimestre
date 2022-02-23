@@ -1,22 +1,41 @@
 $(function(){
 
-    console.log("File JavaScript Loaded Sucessfuly");
+    var buffer = almacenaPaginaVacia();
+
+    $("#overlay").show();
+    $(".loader").show();
     $.getJSON("/api/botellas/todas",function(data){
-
+        
         console.log(data);
-        if(rellenaCajasGafas(data)){
+        if(rellenaCajasBotellas(data)){
 
+            $("#overlay").hide();
+            $(".loader").hide();
 
+            creaElementoPaginacion(data);
+
+            $("#paginacion a").click(function(ev){
+
+                limpiaContenido();
+                let npagina=$(this).attr("class").split("pagina")[1];
+                if(npagina==1){
+
+                    rellenaCajasBotellas(data)
+                }else{
+                    cargaPagina(npagina,data);
+                }
+                
+            });
         }
         
         
     }).fail(function(){
 
         console.log("Los datos recibidos no estan en formato JSON");
-    });
+    })
 })
 
-function rellenaCajasGafas(coleccion){ //creaCajasGafas(data)
+function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
 
    
     let max=$("#productos").children().length;
@@ -31,94 +50,91 @@ function rellenaCajasGafas(coleccion){ //creaCajasGafas(data)
         return true;
 }
 
-function creaElementoPaginacion(){
+function creaElementoPaginacion(coleccion){//se le pasa el json con todos los productos agrupados solo para saber la longitud
+    console.log("hola");
+    //hace un length de todos los productos agrupados y los divide entre 12 elemento por pagina para sacar el nuemro de paginas
+    var numeroPaginas = Math.ceil(14/12);
+    for(let npagina=0;npagina<numeroPaginas;npagina++){
 
-    var elementoPaginacion = $("#paginacion");
-    //hace un length de todos
-    $("<a>")
+        let a = $("<a>");
+        a.attr("href", "#");
+        a.attr("class", "pagina"+(npagina+1));
+        a.text(npagina+1);
+        $("#paginacion").append(a);
+    }
+    
+}
+
+function elementosPaginados(numeroPagina){
+
+    $.getJSON("/api/botellas/pagina/"+numeroPagina,function(data){
+
+        console.log(data);
+
+    }).fail(function(){
+
+        console.log("Los datos recibidos no estan en formato JSON");
+    });
 }
 
 
-// function creaCajasGafas(coleccion){ //creaCajasGafas(data)
+function almacenaPaginaVacia(){
 
-//     var contenedor_productos= $("#productos");
-//     let max=coleccion.length;
-//     for(let caja=0;caja<max;caja++){
+    return $("#productos");
+}
 
-//         var caja_producto=$("<div>");
-//         var enlace_img=$("<a>");
-//         var product_img = $("<div>");
-//         var img_producto=$("<img>");
-//         var p_mask = $("<div>");
-//             var form_hidden = $("<form>");
-//             var input1 = $("<input>");
-//             var input2 = $("<input>");
-//             var input3 = $("<input>");
-//             var input4 = $("<input>");
-//             var boton = $("<button>");
-//             var etiquetaI = $("<i>");
-//         var nombre_producto=$("<h4>");
-//         var precio_producto=$("<h5>");
+function cargaPagina(numeroPagina,coleccion){
 
-//         caja_producto.attr("class", "col-md-4 women-grids wp1 animated wow slideInUp");
-//         caja_producto.attr("data-wow-delay", ".5s");
-        
-//         enlace_img.attr("href", "#");
+    if((numeroPagina-1)>=0){
 
-//         product_img.attr("class","product-img");
+        var indexJson=((numeroPagina-1)*12);
+    }else{
 
-//         img_producto.attr("src", "../../images/subidas/"+coleccion[caja].img);
+        var indexJson=0;
+    }
+    
+   
+    let max=(coleccion.length)-12;
+    for(let caja=0;caja<max;caja++){
 
-//         p_mask.attr("class", "p-mask");
+        $($("#productos .titulo-producto")[caja]).text(coleccion[indexJson].nombre);
+        $($("#productos .precio-producto")[caja]).text(coleccion[indexJson].precio+" €");
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[indexJson].nombre);//nombre en el carrito
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[indexJson].precio);//precio en el carrito
+        $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[indexJson].img)
+        indexJson=indexJson+1;
+    }
+    
+}
 
-//         form_hidden.attr("action", "#");
-//         form_hidden.attr("method", "post");
+function limpiaContenido(){
 
-//         input1.attr("type", "hidden");
-//         input1.attr("name", "cmd");
-//         input1.attr("value", "_cart");
+    let max=$("#productos").children().length;
+    for(let caja=0;caja<max;caja++){
+        $($("#productos .titulo-producto")[caja]).text("");
+        $($("#productos .precio-producto")[caja]).text("");
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value","");//nombre en el carrito
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value","");//precio en el carrito
+        $(".product-img img").eq(caja).attr("src", "");
+       
+    }
+}
 
-//         input2.attr("type", "hidden");
-//         input2.attr("name", "add");
-//         input2.attr("value", "1");
-
-//         input3.attr("type", "hidden");
-//         input3.attr("name", "w3ls1_item");
-//         input3.attr("value", coleccion[caja].nombre);
-
-//         input4.attr("type", "hidden");
-//         input4.attr("name", "amount");
-//         input4.attr("value", coleccion[caja].precio);
-        
-//         boton.attr("type", "submit");
-//         boton.attr("class", "w3ls-cart pw3ls-cart");
-        
-
-//         etiquetaI.attr("class","fa fa-cart-plus");
-//         etiquetaI.attr("aria-hidden","true");
-        
-
-//         nombre_producto.attr("class","titulo-producto");
-//         nombre_producto.text(coleccion[caja].nombre);
-        
-//         precio_producto.attr("class","precio-producto");
-//         precio_producto.text(coleccion[caja].precio+" €");
-        
-//         boton.append(etiquetaI);
-//         boton.text("Add to cart");
-//         form_hidden.append(input1);
-//         form_hidden.append(input2);
-//         form_hidden.append(input3);
-//         form_hidden.append(input4);
-//         form_hidden.append(boton);
-//         p_mask.append(form_hidden);
-//         product_img.append(img_producto);
-//         product_img.append(p_mask);
-//         enlace_img.append(product_img);
-//         caja_producto.append(enlace_img);
-//         caja_producto.append(nombre_producto);
-//         caja_producto.append(precio_producto);
-//         contenedor_productos.append(caja_producto);
-//     }
-//         return true;
-// }
+jQuery(function($){
+    $(document).ajaxSend(function() {
+      $("#overlay").fadeIn(300);　
+    });
+          
+    $('#button').click(function(){
+      $.ajax({
+        type: 'GET',
+        success: function(data){
+          console.log(data);
+        }
+      }).done(function() {
+        setTimeout(function(){
+          $("#overlay").fadeOut(300);
+        },500);
+      });
+    });	
+  });

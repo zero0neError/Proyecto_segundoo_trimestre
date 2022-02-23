@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+<div id="overlay">
+	<div class="loader"></div>
+</div>
 <div class="content">
 	<div class="container">
 		<div class="col-md-4 w3ls_dresses_grid_left">
@@ -48,12 +50,7 @@
 				</div>
 			</div>
 			<div class="w3ls_dresses_grid_left_grid">
-				<div class="dresses_img_hover">
-					<img src={{asset("images/offer.jpg")}} alt=" " class="img-responsive" />
-					<div class="dresses_img_hover_pos">
-						<h4>Upto<span>40%</span><i>Off</i></h4>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		<div id="productos" class="col-md-8 col-sm-8 women-dresses">
@@ -61,7 +58,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -83,7 +80,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -105,7 +102,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -127,7 +124,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -149,7 +146,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -171,7 +168,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -193,7 +190,7 @@
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src={{asset("images/wp1.jpg")}}/>
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
@@ -212,16 +209,16 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src="../../images/subidas/p1botella.jpg">
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1"> 
-									<input type="hidden" name="w3ls1_item" value="LUXFER BOTELLA ALUMINIO 7 LITROS"> 
-									<input type="hidden" name="amount" value="20"> 
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" /> 
+									<input type="hidden" name="w3ls1_item" value="" /> 
+									<input type="hidden" name="amount" value="" /> 
 									<button type="submit" class="w3ls-cart pw3ls-cart">
 										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
 									</button>
@@ -230,20 +227,20 @@
 						</div>
 					</a>
 
-					<h4 class="titulo-producto">LUXFER BOTELLA ALUMINIO 7 LITROS</h4>
-					<h5 class="precio-producto">20 €</h5>
+					<h4 class="titulo-producto"></h4>
+					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src="../../images/subidas/p1botella.jpg">
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1"> 
-									<input type="hidden" name="w3ls1_item" value="LUXFER BOTELLA ALUMINIO 7 LITROS"> 
-									<input type="hidden" name="amount" value="20"> 
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" /> 
+									<input type="hidden" name="w3ls1_item" value="" /> 
+									<input type="hidden" name="amount" value="" /> 
 									<button type="submit" class="w3ls-cart pw3ls-cart">
 										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
 									</button>
@@ -252,20 +249,20 @@
 						</div>
 					</a>
 
-					<h4 class="titulo-producto">LUXFER BOTELLA ALUMINIO 7 LITROS</h4>
-					<h5 class="precio-producto">20 €</h5>
+					<h4 class="titulo-producto"></h4>
+					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src="../../images/subidas/p1botella.jpg">
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1"> 
-									<input type="hidden" name="w3ls1_item" value="LUXFER BOTELLA ALUMINIO 7 LITROS"> 
-									<input type="hidden" name="amount" value="20"> 
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" /> 
+									<input type="hidden" name="w3ls1_item" value="" /> 
+									<input type="hidden" name="amount" value="" /> 
 									<button type="submit" class="w3ls-cart pw3ls-cart">
 										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
 									</button>
@@ -274,20 +271,20 @@
 						</div>
 					</a>
 
-					<h4 class="titulo-producto">LUXFER BOTELLA ALUMINIO 7 LITROS</h4>
-					<h5 class="precio-producto">20 €</h5>
+					<h4 class="titulo-producto"></h4>
+					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src="../../images/subidas/p1botella.jpg">
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1"> 
-									<input type="hidden" name="w3ls1_item" value="LUXFER BOTELLA ALUMINIO 7 LITROS"> 
-									<input type="hidden" name="amount" value="20"> 
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" /> 
+									<input type="hidden" name="w3ls1_item" value="" /> 
+									<input type="hidden" name="amount" value="" /> 
 									<button type="submit" class="w3ls-cart pw3ls-cart">
 										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
 									</button>
@@ -296,20 +293,20 @@
 						</div>
 					</a>
 
-					<h4 class="titulo-producto">LUXFER BOTELLA ALUMINIO 7 LITROS</h4>
-					<h5 class="precio-producto">20 €</h5>
+					<h4 class="titulo-producto"></h4>
+					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
-							<img src="../../images/subidas/p1botella.jpg">
+							<img src=""/>
 							<div class="p-mask">
 								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1"> 
-									<input type="hidden" name="w3ls1_item" value="LUXFER BOTELLA ALUMINIO 7 LITROS"> 
-									<input type="hidden" name="amount" value="20"> 
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" /> 
+									<input type="hidden" name="w3ls1_item" value="" /> 
+									<input type="hidden" name="amount" value="" /> 
 									<button type="submit" class="w3ls-cart pw3ls-cart">
 										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
 									</button>
@@ -318,13 +315,11 @@
 						</div>
 					</a>
 
-					<h4 class="titulo-producto">LUXFER BOTELLA ALUMINIO 7 LITROS</h4>
-					<h5 class="precio-producto">20 €</h5>
+					<h4 class="titulo-producto"></h4>
+					<h5 class="precio-producto"></h5>
 				</div>
-
-				<div id="paginacion">
 				
-				</div>
+				
 				{#
 				<div class="col-md-4 women-grids wp2 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="single.html"><div class="product-img">
@@ -500,6 +495,8 @@
 				</div> #}
 				
 		</div>
+		<div id="paginacion" class="col-md-12 text-center"></div>
+		
 	</div>
 </div>
 {% endblock %}
