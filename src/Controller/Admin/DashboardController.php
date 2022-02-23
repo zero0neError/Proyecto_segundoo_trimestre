@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Tramo;
+use App\Entity\Usuario;
 use App\Entity\Producto;
 use App\Entity\TipoProducto;
 use App\Entity\TiposProductos;
@@ -50,6 +51,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Tramos', 'fas fa-list', Tramo::class);
         yield MenuItem::linkToCrud('Productos', 'fas fa-list', Producto::class);
         yield MenuItem::linkToCrud('Tipo de Producto', 'fas fa-list', TipoProducto::class);
+        yield MenuItem::linkToCrud('Usuarios', 'fas fa-list', Usuario::class);
 
         //Botella de aluminio de 7 litros de capacidad ultraligera, en tierra (5Kg), sumergida (2.5Kg) 
     }

@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass=UsuarioRepository::class)
@@ -26,6 +28,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    
     private $email;
 
     /**
@@ -48,11 +51,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=50)
      */
     private $apellidos;
-
-    /**
-     * @ORM\Column(type="string", length=32, nullable=true)
-     */
-    private $hashEmail;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservas::class, mappedBy="FKCorreo", orphanRemoval=true)
@@ -84,6 +82,15 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('email', new Assert\Email([
+            'message' => 'El email "{{ value }}" no es valido.',
+        ]));
+
+        $metadata->addPropertyConstraint('email', new Assert\NotBlank());
     }
 
     /**
@@ -178,18 +185,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function setApellidos(string $apellidos): self
     {
         $this->apellidos = $apellidos;
-
-        return $this;
-    }
-
-    public function getHashEmail(): ?string
-    {
-        return $this->hashEmail;
-    }
-
-    public function setHashEmail(?string $hashEmail): self
-    {
-        $this->hashEmail = $hashEmail;
 
         return $this;
     }
