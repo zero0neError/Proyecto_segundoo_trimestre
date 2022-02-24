@@ -1,9 +1,23 @@
 $(function(){
     
-    $("#verCarrito").click(
+    $(document.body).on("click","#verCarrito",
         function(){
             console.log("aaaaaah");
-            window.location.href = "http://localhost:8000/vercarrito";
+            
+            window.location.href = "http://localhost:8000/vercarrito/hola";
+            // $.ajax({
+            //     method:"POST",
+            //     url:"/vercarrito",
+            //     data:{
+
+            //         json : "Hola"
+            //     },
+            //     success:function(){
+
+            //         
+            //     }
+
+            // });
         }
     );
 
@@ -64,7 +78,7 @@ function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
         $($("#productos .precio-producto")[caja]).text(coleccion[caja].precio+" €");
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
-        $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);       
+        $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);
        
     }
     return true;

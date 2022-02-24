@@ -27,6 +27,16 @@ class BotellasController extends AbstractController
         return new Response($producto);
     }
 
+    // /**
+    //  * @Route("/api/botellas/carrito", name="todasBotellas")
+    //  */
+    // public function cargaCarrito(ManagerRegistry $doctrine): Response
+    // {
+    //     $json = $_POST["json"];
+
+    //     return new Response($json);
+    // // }
+
 
     /**
      * @Route("/api/botellas/libres", name="libresBotellas")
