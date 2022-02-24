@@ -43,7 +43,7 @@ class BotellasPaginadasController extends AbstractController
         
         
         
-        for($i=0;$i<$count;$i++){
+        for($i=0;$i<$count && $i<12 ;$i++){
             
             $array_response[$i]=$producto[$numero];
             
@@ -51,7 +51,7 @@ class BotellasPaginadasController extends AbstractController
             
         }
         
-        dd($array_response);
-        return new Response(djson_encode($array_response));
+        // dd($array_response);
+        return new Response(json_encode($array_response));
     }
 }

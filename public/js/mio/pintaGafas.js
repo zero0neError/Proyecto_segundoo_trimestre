@@ -1,4 +1,11 @@
 $(function(){
+    
+    $("#verCarrito").click(
+        function(){
+            console.log("aaaaaah");
+            window.location.href = "http://localhost:8000/vercarrito";
+        }
+    );
 
     var buffer = almacenaPaginaVacia();
 
@@ -15,16 +22,26 @@ $(function(){
             creaElementoPaginacion(data);
 
             $("#paginacion a").click(function(ev){
-
+                ev.preventDefault();
                 limpiaContenido();
-                let npagina=$(this).attr("class").split("pagina")[1];
-                if(npagina==1){
-
-                    rellenaCajasBotellas(data)
-                }else{
-                    cargaPagina(npagina,data);
-                }
+                var indexPrimerElementoDeVuelto=($(this).attr("class").split("pagina")[1]);
                 
+                if(indexPrimerElementoDeVuelto>1){
+
+                    indexPrimerElementoDeVueltos=((indexPrimerElementoDeVuelto-1)*12)+1;
+                }else{
+
+                    indexPrimerElementoDeVueltos=1;
+
+                }
+
+                $.getJSON("/api/botellas/pagina/"+indexPrimerElementoDeVueltos,function(data2){
+                    console.log(data2);
+                    rellenaCajasBotellasPagina(data2);
+                   
+                });
+                $("#overlay").hide();
+                $(".loader").hide();
             });
         }
         
@@ -32,22 +49,41 @@ $(function(){
     }).fail(function(){
 
         console.log("Los datos recibidos no estan en formato JSON");
-    })
-})
+    });
+
+    
+});
 
 function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
 
    
     let max=$("#productos").children().length;
     for(let caja=0;caja<max;caja++){
+
+        $($("#productos .titulo-producto")[caja]).text(coleccion[caja].nombre);
+        $($("#productos .precio-producto")[caja]).text(coleccion[caja].precio+" €");
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
+        $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);       
+       
+    }
+    return true;
+}
+
+function rellenaCajasBotellasPagina(coleccion){ //creaCajasGafas(data)
+
+   
+    let max=coleccion.length;
+    for(let caja=0;caja<max;caja++){
+
         $($("#productos .titulo-producto")[caja]).text(coleccion[caja].nombre);
         $($("#productos .precio-producto")[caja]).text(coleccion[caja].precio+" €");
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
         $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img)
-       
     }
-        return true;
+    
+    return true;
 }
 
 function creaElementoPaginacion(coleccion){//se le pasa el json con todos los productos agrupados solo para saber la longitud
@@ -83,15 +119,15 @@ function almacenaPaginaVacia(){
     return $("#productos");
 }
 
-function cargaPagina(numeroPagina,coleccion){
+function cargaPagina(numeroPagina,coleccion){//debemos pasarle el numero del elemento que queremos ver, el elemento 13 (pagina2), no la posicion en el json (12)
 
-    if((numeroPagina-1)>=0){
+    // if((numeroPagina-1)>=0){
 
-        var indexJson=((numeroPagina-1)*12);
-    }else{
+    //     var indexJson=((numeroPagina-1)*12);
+    // }else{
 
-        var indexJson=0;
-    }
+    //     var indexJson=0;
+    // }
     
    
     let max=(coleccion.length)-12;
