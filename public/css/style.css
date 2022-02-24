@@ -1160,12 +1160,6 @@ p.sbmincart-empty-text {
     width: 100%;
 }
 
-button{
-
-	background-color: #0000ff;
-	color: white;;
-	border-radius: 3px;
-}
 
 .about-info p {  
     margin: 1em 0 1.5em;
@@ -3231,4 +3225,24 @@ p.w3-agile{
    margin-left: 55%;
    margin-top: 25%;
 }
+
+#foto-perfil{
+
+	height: 200px;
+	width: 200px;
+}
+
+#container-perfil{
+
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: green;
+	padding: 8px;
+}
+
+#container-perfil textarea{
+
+	margin-top: 5px;
+}
+
 /*-- //responsive--*/

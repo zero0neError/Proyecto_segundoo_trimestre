@@ -1,0 +1,60 @@
+{% extends 'show_profile/index.html.twig' %}
+{% block coso %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block header %}{% endblock %}
+    {% block body %}
+        <div id="container-perfil">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <img id="foto-perfil" src={{asset('images/foto_prefil.png')}} alt = "" height="200" width="300">
+                </div>
+
+                <div class="col-md-8">
+                        
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <label for="nombretxt">Nombre:</label><br>
+                            <input type="text" class="form-control" id="nombretxt" value="" placeholder="Nombre" required/>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="apellidotxt">Apellido:</label><br>
+                            <input type="text" class="form-control" id="apellidotxt" value="" placeholder="Apellido" required/>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="emailtxt">Apellido:</label><br>
+                            <input type="text" class="form-control" id="emailtxt" value="" placeholder="Email" required/>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="reservastxt">Reservas:</label><br>
+                            <textarea id="reservastxt" class="col-md-12" value="" rows="3"  multiple></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        
+        </div>
+    {% endblock %}
+
+</body>
+</html>
+{% endblock %}
+
+
+
+

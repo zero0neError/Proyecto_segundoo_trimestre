@@ -79,6 +79,7 @@ function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
         $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);
+        $($("#productos")[caja]).text(coleccion[caja].nombre); 
        
     }
     return true;
