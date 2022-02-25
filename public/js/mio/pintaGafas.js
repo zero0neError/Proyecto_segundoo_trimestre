@@ -1,30 +1,33 @@
 $(function(){
-    
-    $(document.body).on("click","#verCarrito",
-        function(){
-            console.log("aaaaaah");
+
+
+    // $(document.body).on("click","#verCarrito",
+    //     function(){
+    //         console.log("aaaaaah");
             
-            window.location.href = "http://localhost:8000/vercarrito/hola";
-            // $.ajax({
-            //     method:"POST",
-            //     url:"/vercarrito",
-            //     data:{
+    //         window.location.href = "http://localhost:8000/vercarrito/hola";
+    //         // $.ajax({
+    //         //     method:"POST",
+    //         //     url:"/vercarrito",
+    //         //     data:{
 
-            //         json : "Hola"
-            //     },
-            //     success:function(){
+    //         //         json : "Hola"
+    //         //     },
+    //         //     success:function(){
 
-            //         
-            //     }
+    //         //         
+    //         //     }
 
-            // });
-        }
-    );
+    //         // });
+    //     }
+    // );
 
     var buffer = almacenaPaginaVacia();
 
     $("#overlay").show();
     $(".loader").show();
+
+    
     $.getJSON("/api/botellas/todas",function(data){
         
         console.log(data);
@@ -76,10 +79,13 @@ function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
 
         $($("#productos .titulo-producto")[caja]).text(coleccion[caja].nombre);
         $($("#productos .precio-producto")[caja]).text(coleccion[caja].precio+" €");
+        //Por si falla la carga de los elementos
+        // $(document.getElementById("productos").children[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
+        // $(document.getElementById("productos").children[caja].children[0].children[0].children[1].children[0].children[2]) .attr("value",coleccion[caja].precio);//precio en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
         $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);
-        $($("#productos")[caja]).text(coleccion[caja].nombre); 
+        
        
     }
     return true;
@@ -170,22 +176,3 @@ function limpiaContenido(){
        
     }
 }
-
-jQuery(function($){
-    $(document).ajaxSend(function() {
-      $("#overlay").fadeIn(300);　
-    });
-          
-    $('#button').click(function(){
-      $.ajax({
-        type: 'GET',
-        success: function(data){
-          console.log(data);
-        }
-      }).done(function() {
-        setTimeout(function(){
-          $("#overlay").fadeOut(300);
-        },500);
-      });
-    });	
-  });
