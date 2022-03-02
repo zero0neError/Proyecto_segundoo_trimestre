@@ -50,6 +50,21 @@ class ProductoRepository extends ServiceEntityRepository
 
     //###########################   BOTELLAS
 
+    public function traeTramos()
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT id,duracion_tramo FROM tramo';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+
+    }
+
+
     public function devuelveBotellasAPartirDePagina($pagina)
     {
     

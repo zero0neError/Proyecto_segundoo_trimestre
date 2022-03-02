@@ -1,12 +1,32 @@
 $(function(){
 
+    
 
     $(document.body).on("click","#verCarrito",
         function(){
             $("#PPsbmincart").hide();
-            $("#modal").modal("show");
+            $("#modalReservas").modal("show");
+            $('#myTable').DataTable({
+                data: creaJsonConCarrito(),
+                columns: [
+                    { data: 'nombre' },
+                    { data: 'cantidad' },
+                    { data: 'precio' }
+                ]
+            });
+
+            // $( "#datepicker" ).datepicker();
+            
+            $.getJSON("/api/tramos/todos",function(data){
+
+                rellenaConTramos(data)
+            })
         }
     );
+
+    $('#modalReservas').on('hidden.bs.modal', function () {
+        $("#PPsbmincart").show();
+    })
 
     var buffer = almacenaPaginaVacia();
 
@@ -180,4 +200,39 @@ function limpiaContenido(){
         $(".product-img img").eq(caja).attr("src", "");
        
     }
+}
+
+function creaJsonConCarrito(){
+
+    var arrayObjetos=[];
+
+    let max=$("#PPsbmincart form ul").children().length;
+    for(let i=0;i<max;i++){
+
+        let idCarrito="";
+
+        let nombreCarrito=$($("#PPsbmincart").children()[0].children[1].children[i].children[0].children[0]).text();
+
+        let cantidadCarrito=$("#PPsbmincart").children()[0].children[1].children[i].children[1].children[0].getAttribute("value")
+
+        let precioCarrito=$($("#PPsbmincart").children()[0].children[1].children[i].children[3].children[0]).text().split("$")[1];
+
+        let objeto = {id:idCarrito,nombre:nombreCarrito,cantidad:cantidadCarrito,precio:precioCarrito};
+
+        arrayObjetos[i]=objeto;
+    }
+    console.log(arrayObjetos);
+    return arrayObjetos;
+}
+
+function rellenaConTramos(coleccion){
+
+    for(let i=0;i<coleccion.length;i++){
+
+        let option=$("<option>");
+        option.attr("id",coleccion[i].id);
+        option.text(coleccion[i].duracion_tramo);
+        $("#selectTramos").append(option);
+    }
+    
 }

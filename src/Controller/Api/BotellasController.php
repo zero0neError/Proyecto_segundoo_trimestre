@@ -65,5 +65,31 @@ class BotellasController extends AbstractController
         return new Response($producto);
     }
 
-    
+    /**
+     * @Route("/api/tramos/todos", name="botellasAgrupadas")
+     */
+    public function ddevuelveTramos(ManagerRegistry $doctrine): Response
+    {
+                
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->traeTramos();
+
+        return new Response($producto);
+    }
+
+    /**
+     * @Route("/api/botella/busca/{nombre}", name="product_show")
+     */
+    public function show(ManagerRegistry $doctrine, string $nombre): Response
+    {
+        $nombre=urldecode($nombre);
+        $product = $doctrine->getRepository(Producto::class)->findOneBy(['id_producto' => $nombre]);
+        $json=json_encode($product);
+        dd($product);
+        
+        return new Response($json);
+
+        
+    }
 }
