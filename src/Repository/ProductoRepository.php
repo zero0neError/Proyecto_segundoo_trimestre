@@ -64,6 +64,20 @@ class ProductoRepository extends ServiceEntityRepository
 
     }
 
+    public function traeProductoPorNombre($nombre)
+    {
+    
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        
+        $sql = "SELECT id_producto,nombre,descripcion,precio,capacidad,img,tipo_producto_id,esta_alquilado FROM PRODUCTO WHERE nombre LIKE :nombre GROUP BY nombre";
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['nombre' => $nombre]);
+        $registros=$resultSet->fetchAll();
+        
+        return $registros;
+
+    }
 
     public function devuelveBotellasAPartirDePagina($pagina)
     {

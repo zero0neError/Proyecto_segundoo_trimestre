@@ -84,9 +84,12 @@ class BotellasController extends AbstractController
     public function show(ManagerRegistry $doctrine, string $nombre): Response
     {
         $nombre=urldecode($nombre);
-        $product = $doctrine->getRepository(Producto::class)->findOneBy(['id_producto' => $nombre]);
-        $json=json_encode($product);
-        dd($product);
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->traeProductoPorNombre($nombre);
+        
+        $json=json_encode($producto);
+        //dd($producto[0]);
         
         return new Response($json);
 

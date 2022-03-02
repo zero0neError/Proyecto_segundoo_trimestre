@@ -209,10 +209,10 @@ function creaJsonConCarrito(){
     let max=$("#PPsbmincart form ul").children().length;
     for(let i=0;i<max;i++){
 
-        let idCarrito="";
+        var idCarrito="";
 
         let nombreCarrito=$($("#PPsbmincart").children()[0].children[1].children[i].children[0].children[0]).text();
-
+        
         let cantidadCarrito=$("#PPsbmincart").children()[0].children[1].children[i].children[1].children[0].getAttribute("value")
 
         let precioCarrito=$($("#PPsbmincart").children()[0].children[1].children[i].children[3].children[0]).text().split("$")[1];
@@ -221,8 +221,16 @@ function creaJsonConCarrito(){
 
         arrayObjetos[i]=objeto;
     }
-    console.log(arrayObjetos);
+    
     return arrayObjetos;
+}
+
+function dameInfoProductoPorNombre($nombre){
+
+    $.getJSON("/api/botella/busca/"+nombreCarrito,function(data){
+
+        return data;
+    });
 }
 
 function rellenaConTramos(coleccion){
@@ -235,4 +243,10 @@ function rellenaConTramos(coleccion){
         $("#selectTramos").append(option);
     }
     
+}
+
+function dameNumeroTotalDeUnProductoNoAlquilado(){
+
+    //los que tengan el alquilado en false y los que su fecha de finalizacion de alquilacion sea el dia de empezar a alquilar 
+    // este producto
 }
