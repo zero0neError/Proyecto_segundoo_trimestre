@@ -1,26 +1,12 @@
 $(function(){
 
 
-    // $(document.body).on("click","#verCarrito",
-    //     function(){
-    //         console.log("aaaaaah");
-            
-    //         window.location.href = "http://localhost:8000/vercarrito/hola";
-    //         // $.ajax({
-    //         //     method:"POST",
-    //         //     url:"/vercarrito",
-    //         //     data:{
-
-    //         //         json : "Hola"
-    //         //     },
-    //         //     success:function(){
-
-    //         //         
-    //         //     }
-
-    //         // });
-    //     }
-    // );
+    $(document.body).on("click","#verCarrito",
+        function(){
+            $("#PPsbmincart").hide();
+            $("#modal").modal("show");
+        }
+    );
 
     var buffer = almacenaPaginaVacia();
 
@@ -38,7 +24,9 @@ $(function(){
 
             creaElementoPaginacion(data);
 
-            $("#paginacion a").click(function(ev){
+            $(".pagination li a").click(function(ev){
+                
+
                 ev.preventDefault();
                 limpiaContenido();
                 var indexPrimerElementoDeVuelto=($(this).attr("class").split("pagina")[1]);
@@ -55,10 +43,9 @@ $(function(){
                 $.getJSON("/api/botellas/pagina/"+indexPrimerElementoDeVueltos,function(data2){
                     console.log(data2);
                     rellenaCajasBotellasPagina(data2);
-                   
+                    
                 });
-                $("#overlay").hide();
-                $(".loader").hide();
+                
             });
         }
         
@@ -73,9 +60,21 @@ $(function(){
 
 function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
 
+    //####    IDEA DE FUNCIONAMENTO
+
+   //####    La pagina tendra 12 cajas pero si solo hay 5 productos las otras 7 cajas estaran vacias
+   //####    por lo que el resto que estan vacias seran invisibles para impedir que haya espacio sin utilizar
+   //####    en la pagina.
+
+   //####    FIN
    
     let max=$("#productos").children().length;
     for(let caja=0;caja<max;caja++){
+
+        var inputId = $("<input>");
+        inputId.attr("type","hidden");
+        inputId.attr("name","id");
+        inputId.attr("value",coleccion[caja].id_producto);
 
         $($("#productos .titulo-producto")[caja]).text(coleccion[caja].nombre);
         $($("#productos .precio-producto")[caja]).text(coleccion[caja].precio+" €");
@@ -85,6 +84,8 @@ function rellenaCajasBotellas(coleccion){ //creaCajasGafas(data)
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[2]).attr("value",coleccion[caja].nombre);//nombre en el carrito
         $($("#productos").children()[caja].children[0].children[0].children[1].children[0].children[3]).attr("value",coleccion[caja].precio);//precio en el carrito
         $(".product-img img").eq(caja).attr("src", "../../images/subidas/"+coleccion[caja].img);
+
+        $($("#productos").children()[caja].children[0].children[0].children[1].children[0]).append(inputId);
         
        
     }
@@ -112,12 +113,16 @@ function creaElementoPaginacion(coleccion){//se le pasa el json con todos los pr
     //hace un length de todos los productos agrupados y los divide entre 12 elemento por pagina para sacar el nuemro de paginas
     var numeroPaginas = Math.ceil(14/12);
     for(let npagina=0;npagina<numeroPaginas;npagina++){
+        var a = $("<a>");
+        var li = $("<li>");
 
-        let a = $("<a>");
+        li.attr("class", "page-item");
+
         a.attr("href", "#");
-        a.attr("class", "pagina"+(npagina+1));
+        a.attr("class", "page-link"+" pagina"+(npagina+1));
         a.text(npagina+1);
-        $("#paginacion").append(a);
+        li.append(a);
+        $(".pagination").append(li);
     }
     
 }

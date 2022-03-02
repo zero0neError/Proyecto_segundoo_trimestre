@@ -273,7 +273,7 @@ button.w3view-cart:focus{
 
 
 /*--banner bottom--*/
-.banner-bootom-w3-agileits,.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
+.banner-bootom-w3-agileits,.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.login,.check-out,.payment{
 	padding:50px 0;
 }
 .top-products h3,.features h3,.top-brands h3,.contact h3,.about h3,.team h3,h3.agileits-icons-title,.faq h3,.products h3,.login h3,.check-out h3,.payment h3{
@@ -1461,7 +1461,7 @@ h3.head-top {
 .pa_italic span {
     display: none;
 }
-.collapsed span {
+ .collapsed span{
     display: inline-block;
     left: -1em;
 	font-size: 11px;
@@ -1637,36 +1637,7 @@ p.single-price-text {
 .single-page-icons.social-icons ul li { 
     vertical-align: middle;
 }
-/*-- collapse-tabs -*/
-.collpse.tabs {
-    padding-bottom:0;
-}
-.panel-group {
-    margin-bottom: 0;
-}
-.collpse.tabs h4.panel-title a {
-    font-size: 1em;
-    text-transform: uppercase;
-    color: #ffffff;
-    display: block;
-    text-decoration: none;
-    padding: .8em 1.5em;
-    font-weight: 300;
-	position:relative;
-}
-.collpse.tabs .panel-default {
-    border-color: #37a1f3;
-}
-.collpse.tabs .panel-body {
-	padding: 15px;
-	color: #999;
-	line-height: 1.8em;
-	font-size: 1em;
-}
-.collpse.tabs .panel-default > .panel-heading {
-    padding: 0;
-    background: #37a1f3;
-} 
+
 .pa_italic span.fa-arrow{
     display: none;
 }
@@ -2381,7 +2352,7 @@ p.w3-agile{
 	.banner-agile h3 {
 		font-size: 45px;
 	}
-	.banner-bootom-w3-agileits, .top-products, .fandt, .top-brands, .newsletter, .footer, .content, .contact, .about, .team, .main-grid-border, .faq, .products, .collpse.tabs, .login, .check-out, .payment {
+	.banner-bootom-w3-agileits, .top-products, .fandt, .top-brands, .newsletter, .footer, .content, .contact, .about, .team, .main-grid-border, .faq, .products, .login, .check-out, .payment {
 		padding: 40px 0;
 	}
 	.top-products h3, .features h3, .top-brands h3, .newsletter h3, .newsletter h2,.contact h3, .about h3, .team h3, h3.agileits-icons-title, .faq h3, .products h3, .login h3, .check-out h3, .payment h3 {
@@ -3245,4 +3216,108 @@ p.w3-agile{
 	margin-top: 5px;
 }
 
-/*-- //responsive--*/
+/* banner con video */
+
+.contenedorHeader {
+	position: relative;
+	background-color: black;
+	height: 75vh;
+	min-height: 25rem;
+	width: 80%;
+	overflow: hidden;
+	margin: auto;
+  }
+  
+.contenedorHeader video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: 0;
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+  }
+  
+.contenedorHeader .container {
+	position: relative;
+	z-index: 2;
+  }
+
+  
+  /* Media Query for devices withi coarse pointers and no hover functionality */
+  
+  /* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+  
+  @media (pointer: coarse) and (hover: none) {
+	.contenedorHeader {
+	  background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+	}
+  
+	.contenedorHeader video {
+	  display: none;
+	}
+  }
+
+/*-- collapse-tabs -*/
+
+
+.collpse.tabs h4.panel-title a {
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+    padding: .8em 1.5em;
+    font-weight: 300;
+	position:relative;
+}
+.collpse.tabs .panel-default {
+    border-color: #37a1f3;
+}
+.collpse.tabs .panel-body {
+	padding: 15px;
+	color: #999;
+	line-height: 1.8em;
+	font-size: 1em;
+}
+.collpse.tabs .panel-default > .panel-heading {
+    padding: 0;
+    background: #37a1f3;
+}
+.l{
+
+	background-color: #fff3cd;
+}
+
+
+.breadcrumb{
+
+	background-color: white;
+}
+
+.pagination{
+
+	margin-left: 50%;
+}
+
+.horarios{
+
+	height: 150px;
+	border: #00e091 solid 2px;
+}
+
+.horarios p{
+
+	padding: 20px 0px 0px 10px;
+}
+
+.horarios button{
+
+	float: right;
+	margin-right: 10px;
+}

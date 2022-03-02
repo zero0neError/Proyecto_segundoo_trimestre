@@ -3,14 +3,14 @@
 {% block title %}Pagina principal{% endblock %}
 
 {% block body %}
+<div class="contenedorHeader embed-responsive embed-responsive-16by9">
 
-<div class="banner-agile">
-	<div class="container">
-		<h2>WELCOME TO</h2>
-		<h3>FASHION <span>CLUB</span></h3>
-		<p>Suspendisse sed tellus id libero pretium interdum. Suspendisse potenti. Quisque consectetur elit sit amet vehicula tristique. </p>
-		<a href="/about">Read More</a>
-	</div>
+	<!-- The HTML5 video element that will create the background video on the header -->
+	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+		<source src={{asset("images/video.mp4")}} type="video/mp4">
+	</video>
+
+
 </div>
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
@@ -47,14 +47,14 @@
 <div class="fandt">
 	<div class="container">
 		<div class="col-md-6 features">
-			<h3>Our Services</h3>
+			<h3>Nuestros servicios</h3>
 			<div class="support">
 				<div class="col-md-2 ficon hvr-rectangle-out">
 					<i class="fa fa-user " aria-hidden="true"></i>
 				</div>
 				<div class="col-md-10 ftext">
-					<h4>24/7 online free support</h4>
-					<p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+					<h4>Soporte las 24 horas</h4>
+					<p>Nuestros empleados estan disponibles a cualquier hora del dia incluso en fiestas</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -63,8 +63,8 @@
 					<i class="fa fa-bus" aria-hidden="true"></i>
 				</div>
 				<div class="col-md-10 ftext">
-					<h4>Free shipping</h4>
-					<p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+					<h4>Envio gratuito</h4>
+					<p>Contamos con un servicio de envio totalmente gratuito sin tasas</p>
 				</div>	
 				<div class="clearfix"></div>
 			</div>
@@ -73,8 +73,8 @@
 					<i class="fa fa-money" aria-hidden="true"></i>
 				</div>
 				<div class="col-md-10 ftext">
-					<h4>100% money back</h4>
-					<p>Praesent rutrum vitae ligula sit amet vehicula. Donec eget libero nec dolor tincidunt vulputate.</p>
+					<h4>Devoluciones gratuitas</h4>
+					<p>¿No te convencen nuestros productos? Devuelvelos gratuitamente</p>
 				</div>	
 				<div class="clearfix"></div>				
 			</div>
@@ -115,7 +115,7 @@
 <!-- top-brands -->
 <div class="top-brands">
 	<div class="container">
-		<h3>Top Brands</h3>
+		<h3>Marcas  colaboradoras</h3>
 		<div class="sliderfig">
 			<ul id="flexiselDemo1">			
 				<li>
@@ -139,23 +139,6 @@
 		</div>
 	</div>
 <!-- //top-brands -->
-<!-- newsletter -->
-	<div class="newsletter">
-		<div class="container">
-			<div class="col-md-6 w3agile_newsletter_left">
-				<h3>Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
-			</div>
-			<div class="col-md-6 w3agile_newsletter_right">
-				<form action="#" method="post">
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<input type="submit" value="Subscribe" />
-				</form>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-
 
 
 {% endblock %}

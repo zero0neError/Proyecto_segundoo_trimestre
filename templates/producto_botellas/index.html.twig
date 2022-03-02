@@ -1,61 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+<div class="modal face" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="modalLabel">Horarios de apertura</h5>
+		</div>
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
 <div id="overlay">
 	<div class="loader"></div>
 </div>
 <div class="content">
 	<div class="container">
-		<div class="col-md-4 w3ls_dresses_grid_left">
-			<div class="w3ls_dresses_grid_left_grid">
-				<h3>Categories</h3>
-					<div class="w3ls_dresses_grid_left_grid_sub">
-						<div class="ecommerce_dres-type">
-							<ul>
-								<li><a href="women.html">Dresses</a></li>
-								<li><a href="women.html">Sarees</a></li>
-								<li><a href="women.html">Shorts & Skirts</a></li>
-								<li><a href="women.html">Jeans</a></li>
-								<li><a href="women.html">Shirts</a></li>
-							</ul>
-						</div>
-					</div>
-			</div>
-			<div class="w3ls_dresses_grid_left_grid">
-				<h3>Color</h3>
-				<div class="w3ls_dresses_grid_left_grid_sub">
-					<div class="ecommerce_color">
-						<ul>
-							<li><a href="#"><i></i> Red(5)</a></li>
-							<li><a href="#"><i></i> Brown(2)</a></li>
-							<li><a href="#"><i></i> Yellow(3)</a></li>
-							<li><a href="#"><i></i> Violet(6)</a></li>
-							<li><a href="#"><i></i> Orange(2)</a></li>
-							<li><a href="#"><i></i> Blue(1)</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="w3ls_dresses_grid_left_grid">
-				<h3>Size</h3>
-				<div class="w3ls_dresses_grid_left_grid_sub">
-					<div class="ecommerce_color ecommerce_size">
-						<ul>
-							<li><a href="#">Medium</a></li>
-							<li><a href="#">Large</a></li>
-							<li><a href="#">Extra Large</a></li>
-							<li><a href="#">Small</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="w3ls_dresses_grid_left_grid">
-				
-			</div>
-		</div>
-		<div id="productos" class="col-md-8 col-sm-8 women-dresses">
+		
+		<div id="productos" class="col-md-12 col-sm-12">
 			
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -77,7 +51,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -99,7 +73,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -121,7 +95,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -143,7 +117,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -165,7 +139,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -187,7 +161,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -209,7 +183,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -231,7 +205,7 @@
 					<h5 class="precio-producto"></h5>
 				</div>
 
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
+				<div class="col-md-4 col-sm-12 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="">
 						<div class="product-img">
 							<img src=""/>
@@ -252,74 +226,6 @@
 					<h4 class="titulo-producto"></h4>
 					<h5 class="precio-producto"></h5>
 				</div>
-
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
-					<a href="">
-						<div class="product-img">
-							<img src=""/>
-							<div class="p-mask">
-								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" /> 
-									<input type="hidden" name="w3ls1_item" value="" /> 
-									<input type="hidden" name="amount" value="" /> 
-									<button type="submit" class="w3ls-cart pw3ls-cart">
-										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</a>
-
-					<h4 class="titulo-producto"></h4>
-					<h5 class="precio-producto"></h5>
-				</div>
-
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
-					<a href="">
-						<div class="product-img">
-							<img src=""/>
-							<div class="p-mask">
-								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" /> 
-									<input type="hidden" name="w3ls1_item" value="" /> 
-									<input type="hidden" name="amount" value="" /> 
-									<button type="submit" class="w3ls-cart pw3ls-cart">
-										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</a>
-
-					<h4 class="titulo-producto"></h4>
-					<h5 class="precio-producto"></h5>
-				</div>
-
-				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s" class="caja">
-					<a href="">
-						<div class="product-img">
-							<img src=""/>
-							<div class="p-mask">
-								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" /> 
-									<input type="hidden" name="w3ls1_item" value="" /> 
-									<input type="hidden" name="amount" value="" /> 
-									<button type="submit" class="w3ls-cart pw3ls-cart">
-										<i class="fa fa-cart-plus" aria-hidden="true"></i>Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</a>
-
-					<h4 class="titulo-producto"></h4>
-					<h5 class="precio-producto"></h5>
-				</div>
-				
-				
 				
 				{# <div class="col-md-4 women-grids wp2 animated wow slideInUp" data-wow-delay=".5s" class="caja">
 					<a href="single.html"><div class="product-img">
@@ -517,9 +423,15 @@
 				</div>  #}
 				
 		</div>
-		<div id="paginacion" class="col-md-12 text-center"></div>
+
+			
+		
 		
 	</div>
+
+	<ul class="pagination col-12">
+		{# sera rellenado con el numero de paginas en javascript #}
+	</ul>
 </div>
 {% endblock %}
 

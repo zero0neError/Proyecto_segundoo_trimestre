@@ -3,71 +3,112 @@
 
 {% block body %}
 
+<div class="modal face" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="modalLabel">Horarios de apertura</h5>
+		</div>
+		<div class="modal-body">
+			<table class="table table-hover">
+				<thead>
+					<tr class="table-warning l">
+						<th scope="col">1º semestre del año</th>
+						<th scope="col">Lunes</th>
+						<th scope="col">Martes</th>
+						<th scope="col">Miercoles</th>
+						<th scope="col">Jueves</th>
+						<th scope="col">Viernes</th>
+						<th scope="col">Sabado</th>
+						<th scope="col">Domingo</th>
+					</tr>
+ 				</thead>
+				<tbody>
+					<tr>
+						<th scope="row" class="table-warning l">1º Turno</th>
+						<td>9:00 - 14:00</td>
+						<td>9:00 - 14:00</td>
+						<td>9:00 - 14:00</td>
+						<td>9:00 14:00</td>
+						<td>Cerrado</td>
+						<td>9:00 - 12:00</td>
+						<td>Cerrado</td>
+					</tr>
+
+					<tr>
+						<th scope="row" class="table-warning l">2º Turno</th>
+						<td>18:00 - 21:00</td>
+						<td>18:00 - 21:00</td>
+						<td>18:00 - 21:00</td>
+						<td>18:00 - 21:00</td>
+						<td>18:00 - 20:00</td>
+						<td>Cerrado</td>
+						<td>Cerrado</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+		</div>
+		</div>
+	</div>
+</div>
+
 <div class="about">
 	<div class="container"> 
-		<h3>About Us</h3>
+		
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index">Inicio</a></li>
+			<li class="breadcrumb-item active" aria-current="page"><a href="about">Sobre Nosotros</a></li>
+		</ol>
+	
+		<h3>Sobre nosotros</h3>
 		<div class="about-info">
-			<div class="col-md-8 about-grids">
-				<h4>Our latest collection</h4>
-				<p>Dignissimos at vero eos et accusamus et iusto odio ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecat officia. </p>		
-					<div class="about-w3ls-row">
+			<div class="col-md-6">
+			
+				<div class="collpse tabs">
+
+				<div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
 				
-						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
-						<ul id="flexiselDemo3">
-							<li>
-								<img src="images/a1.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/a2.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/a3.jpg" class="img-responsive" alt="" />
-							</li>
-							<li> 
-								<img src="images/a4.jpg" class="img-responsive" alt="" />
-							</li>
-						</ul> 
-						<div class="clearfix"> </div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									</i>¿Cómo pago con tarjeta de crédito/débito?<span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+							<div class="panel-body">
+								Nuestra pagina cuenta con una validacion super segura de tarjetas de credito, ya que necesitaras confirmar la compra en tu aplicacion web del banco. Ademas contamos con pagos con paypal para mas seguridad
+							</div>
+						</div>
 					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									¿Cómo pago una compra de Seawild club? <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+								</a> 
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
+							<div class="panel-body">
+								Para realizar un alquiler añade los productos que quieres alquilar al carrito cuando estes listo para hace la transaccion pincha en "Alquila Ya!" en el carrito así podras seleccionar cuanto tiempo quieres alquilartodos los productos
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4 about-grids">
-					<h4>Our Advantages</h4>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>01</h5>
-						</div>
-						<div class="pince-right">
-							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>02</h5>
-						</div>
-						<div class="pince-right">
-							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>03</h5>
-						</div>
-						<div class="pince-right">
-							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="pince">
-						<div class="pince-left">
-							<h5>04</h5>
-						</div>
-						<div class="pince-right">
-							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+			
+			</div>
+			<div class="col-md-6 about-grids">
+					<div class="horarios">
+						<p>¿Quieres saber cuando abre nuestra tienda física?<br>Consulta nuestros horarios de apertura</p>
+						<button type="button" class="btn btn-success" id="horariosButton">Consulta</button>
+					</div>					
+
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -154,4 +195,10 @@
 </div>
 <!--team-->
 
+{% endblock %}
+
+{% block javascripts %}
+	
+	{{ parent() }}
+	<script src={{asset("js/mio/about.js")}}></script>
 {% endblock %}
