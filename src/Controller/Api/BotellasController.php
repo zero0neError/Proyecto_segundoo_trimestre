@@ -141,4 +141,17 @@ class BotellasController extends AbstractController
         //dd($json);
         return new Response($producto);  
     }
+
+    /**
+     * @Route("/api/botella/update/{nombre}/{nveces}", name="update_producto")
+     */
+    public function updateaUnNumerroDeVecesUnProducto(ManagerRegistry $doctrine,string $nombre, int $nveces): Response
+    {
+        
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->alquilarNumeroDeRegistrosPorNombre($nombre,$nveces);
+        
+        return new Response($producto);  
+    }
 }

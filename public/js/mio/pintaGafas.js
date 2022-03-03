@@ -28,8 +28,24 @@ $(function(){
                 for(let i=0;i<max;i++){
 
                     var nombreABuscar=$($("#myTable tbody tr")[i].children[0]).text();
-                    var cantidad=dameNumeroTotalDeUnProductoNoAlquilado(nombreABuscar);
-                    console.log(cantidad);
+                    var cantidadProductoCarrito=parseInt($($("#myTable tbody tr")[i].children[1]).text());
+                    var cantidad=parseInt(dameNumeroTotalDeUnProductoNoAlquilado(nombreABuscar));
+                    
+                    if(cantidadProductoCarrito<=cantidad){
+
+                        $.ajax({
+                            async: false,
+                            url: "/api/botella/update/"+nombreABuscar+"/"+cantidadProductoCarrito,
+                            success: function(data) {
+                                console.log(data);                    
+                            }
+                        });
+
+                    }else{
+
+                        console.log("no se puede alquilar");
+                    }
+                    
                 }
                 
             })

@@ -91,6 +91,18 @@ class ProductoRepository extends ServiceEntityRepository
         return $numero1+$numero2;
     }
 
+    public function alquilarNumeroDeRegistrosPorNombre(string $nombre,int $nveces){
+
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'UPDATE PRODUCTO set esta_alquilado = 1 WHERE nombre = :nombre and esta_alquilado = 0 limit :nveces';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['nombre' => $nombre, 'nveces' => $nveces]);
+        $registros=$resultSet->fetchAll();
+        
+        return true;
+    }
+
     public function traeProductoNoAlquiladoPorId($id){
 
         $conn = $this->getEntityManager()->getConnection();
