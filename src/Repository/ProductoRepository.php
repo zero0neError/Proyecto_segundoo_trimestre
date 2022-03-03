@@ -95,9 +95,10 @@ class ProductoRepository extends ServiceEntityRepository
 
         $conn = $this->getEntityManager()->getConnection();
         $registros=array();
-        $sql = 'UPDATE PRODUCTO set esta_alquilado = 1 WHERE nombre = :nombre and esta_alquilado = 0 limit :nveces';
+        $sql = 'UPDATE PRODUCTO set esta_alquilado = 1 WHERE nombre = :nombre and esta_alquilado = 0 limit '.$nveces;
         $stmt = $conn->prepare($sql);
-        $resultSet = $stmt->executeQuery(['nombre' => $nombre, 'nveces' => $nveces]);
+        $resultSet = $stmt->executeQuery(['nombre' => $nombre]);
+        dd($resultSet);
         $registros=$resultSet->fetchAll();
         
         return true;

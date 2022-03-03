@@ -32,7 +32,11 @@ $(function(){
                     var cantidad=parseInt(dameNumeroTotalDeUnProductoNoAlquilado(nombreABuscar));
                     
                     if(cantidadProductoCarrito<=cantidad){
-
+                        var fechaInicioReserva=$("#datepicker")[0].value;
+                        var tramoIndex = $("#selectTramos")[0].options.selectedIndex;
+                        var tramo=$("#selectTramos")[0].options[tramoIndex];
+                        
+                        
                         $.ajax({
                             async: false,
                             url: "/api/botella/update/"+nombreABuscar+"/"+cantidadProductoCarrito,
@@ -268,7 +272,7 @@ function rellenaConTramos(coleccion){
     for(let i=0;i<coleccion.length;i++){
 
         let option=$("<option>");
-        option.attr("id",coleccion[i].id);
+        option.attr("value",coleccion[i].id);
         option.text(coleccion[i].duracion_tramo);
         $("#selectTramos").append(option);
     }
