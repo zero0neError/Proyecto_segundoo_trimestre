@@ -20,6 +20,18 @@ $(function(){
             $.getJSON("/api/tramos/todos",function(data){
 
                 rellenaConTramos(data)
+            });
+
+            $("#btnAlquilar").click(function(){
+
+                let max=$("#myTable tbody tr").length;
+                for(let i=0;i<max;i++){
+
+                    var nombreABuscar=$($("#myTable tbody tr")[i].children[0]).text();
+                    var cantidad=dameNumeroTotalDeUnProductoNoAlquilado(nombreABuscar);
+                    console.log(cantidad);
+                }
+                
             })
         }
     );
@@ -129,7 +141,7 @@ function rellenaCajasBotellasPagina(coleccion){ //creaCajasGafas(data)
 }
 
 function creaElementoPaginacion(coleccion){//se le pasa el json con todos los productos agrupados solo para saber la longitud
-    console.log("hola");
+    
     //hace un length de todos los productos agrupados y los divide entre 12 elemento por pagina para sacar el nuemro de paginas
     var numeroPaginas = Math.ceil(14/12);
     for(let npagina=0;npagina<numeroPaginas;npagina++){
@@ -225,12 +237,14 @@ function creaJsonConCarrito(){
     return arrayObjetos;
 }
 
-function dameInfoProductoPorNombre($nombre){
+function dameInfoProductoPorNombre(nombreCarrito){
 
     $.getJSON("/api/botella/busca/"+nombreCarrito,function(data){
 
+        console.log(data);
         return data;
     });
+
 }
 
 function rellenaConTramos(coleccion){
@@ -245,8 +259,71 @@ function rellenaConTramos(coleccion){
     
 }
 
-function dameNumeroTotalDeUnProductoNoAlquilado(){
+// function dameNumeroTotalDeUnProductoNoAlquilado(nombre){
+
+//     //los que tengan el alquilado en false y los que su fecha de finalizacion de alquilacion sea el dia de empezar a alquilar 
+//     // este producto
+//     var primerJson;
+//     var numero1;
+//     var numero2;
+//     $.getJSON("/api/botella/busca/"+nombre,function(data){
+
+//         primerJson=data[0].id_producto;
+//         console.log("1: "+primerJson);
+        
+//     }).done(function() {//Cuando se reciban los datos
+        
+//         $.getJSON("/api/botella/buscaNA/"+primerJson,function(data2){
+    
+//             var numero1=data2[0].registros;
+//             console.log("2: "+numero1);
+//         }).done(function() {
+
+//             console.log($("#datepicker")[0].value);
+//             $.getJSON("/api/botella/buscaNAFecha/"+$("#datepicker")[0].value,function(data3){//buscamos numero de producto que termina el alquiler el dia solicitado
+
+//                 var numero2=data3[0].registros;
+//                 console.log("3: "+numero2);
+//             }).done(function() {
+                
+//                 console.log("total: "+numerototal);
+//                 var numerototal=numero1+numero2;
+//                 return numerototal;
+//             });;
+//         });
+
+//       });
+// }
+
+function dameNumeroTotalDeUnProductoNoAlquilado(nombre){
 
     //los que tengan el alquilado en false y los que su fecha de finalizacion de alquilacion sea el dia de empezar a alquilar 
     // este producto
+    var idP;
+    var numero1;
+    var numerototal;
+
+    $.ajax({
+        async: false,
+        url: "/api/botella/busca/"+nombre,
+        success: function(data) {
+            var primerJson=JSON.parse(data);
+            idP=primerJson[0].id_producto;
+
+            $.ajax({
+                async: false,
+                url: "/api/botella/totalLibre/"+$("#datepicker")[0].value+"/"+idP,
+                success: function(data2) {
+                    
+                    numerototal=data2;
+                    
+                }
+            }); 
+
+        }
+    });
+
+
+    return numerototal;
+
 }

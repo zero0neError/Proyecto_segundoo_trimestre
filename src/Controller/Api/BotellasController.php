@@ -91,8 +91,54 @@ class BotellasController extends AbstractController
         $json=json_encode($producto);
         //dd($producto[0]);
         
-        return new Response($json);
+        return new Response($json);  
+    }
 
+    /**
+     * @Route("/api/botella/buscaNA/{id}", name="count_botellas_libres")
+     */
+    public function showNA(ManagerRegistry $doctrine, int $id): Response
+    {
         
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->traeProductoNoAlquiladoPorId($id);
+        //dd($producto);
+        //$json=json_encode($producto);
+        //dd($producto[0]);
+        //dd($json);
+        return new Response($producto);  
+    }
+
+    /**
+     * @Route("/api/botella/buscaNAFecha/{fecha}", name="count_botellas_libres_fecha")
+     */
+    public function showNAFecha(ManagerRegistry $doctrine,string $fecha): Response
+    {
+        
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->traeProductoNoAlquiladoPorFecha($fecha);
+        //dd($producto);
+        //$json=json_encode($producto);
+        //dd($producto[0]);
+        //dd($json);
+        return new Response($producto);  
+    }
+
+    /**
+     * @Route("/api/botella/totalLibre/{fecha}/{id}", name="count_botellas_libres_totoal")
+     */
+    public function showLibresTotales(ManagerRegistry $doctrine,string $fecha, int $id): Response
+    {
+        
+        $manager=$doctrine->getManager();
+
+        $producto=$manager->getRepository(Producto::class)->traeProductoNoAlquiladoNumeroTotal($id,$fecha);
+        //dd($producto);
+        //$json=json_encode($producto);
+        //dd($producto[0]);
+        //dd($json);
+        return new Response($producto);  
     }
 }

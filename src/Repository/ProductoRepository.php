@@ -64,6 +64,57 @@ class ProductoRepository extends ServiceEntityRepository
 
     }
 
+    public function traeProductoNoAlquiladoNumeroTotal($id,$fecha){
+
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT count(nombre) as regis FROM PRODUCTO WHERE id_producto = :id and esta_alquilado = 0';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['id' => $id]);
+        $registros=$resultSet->fetchAll();
+        
+        //$json1=json_encode($registros);
+        //dd();
+        $numero1=(int)$registros[0]["regis"];
+        
+        //dd($numero1);
+
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT count(*) as regis FROM reservas WHERE fecha_fin_de_reserva = :fecha';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['fecha' => $fecha]);
+        $registros=$resultSet->fetchAll();
+
+        $numero2=(int)$registros[0]["regis"];
+        
+        return $numero1+$numero2;
+    }
+
+    public function traeProductoNoAlquiladoPorId($id){
+
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT count(nombre) as registros FROM PRODUCTO WHERE id_producto = :id and esta_alquilado = 0';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['id' => $id]);
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+    }
+
+    public function traeProductoNoAlquiladoPorFecha(string $fecha){
+
+        $conn = $this->getEntityManager()->getConnection();
+        $registros=array();
+        $sql = 'SELECT count(*) as registros FROM reservas WHERE fecha_fin_de_reserva = :fecha';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['fecha' => $fecha]);
+        $registros=$resultSet->fetchAll();
+        
+        return json_encode($registros);
+    }
+
     public function traeProductoPorNombre($nombre)
     {
     
